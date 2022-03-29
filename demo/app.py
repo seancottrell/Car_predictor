@@ -2,31 +2,31 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def homepage():
     return render_template("home.html")
 
-@app.route("/about")
+@app.route('/about')
 def projectwriteup():
     return render_template("project_writeup.html")
 
-@app.route("/Alec_Harrod")
+@app.route('/alec')
 def alec():
     return render_template("resume_alec.html")
 
-@app.route("/Roshane_Bent")
+@app.route('/roshane')
 def roshane():
     return render_template("resume_roshane.html")
 
-@app.route("/Isaac_Matsko")
+@app.route('/isaac')
 def isaac():
     return render_template("resume_isaac.html")
 
-@app.route("/Sean_Cottrell")
+@app.route('/sean')
 def sean():
     return render_template("resume_sean.html")
 
 
 if __name__ == '__main__':
-    app.run(debud=True)
+    app.run(debug=True)
 #change homepage.html to the html file in your templates folder
