@@ -21,7 +21,7 @@ def roshane():
 
 @app.route('/isaac')
 def isaac():
-    return render_template("resume_issac.html")
+    return render_template("resume_isaac.html")
 
 @app.route('/sean')
 def sean():
