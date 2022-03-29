@@ -17,11 +17,11 @@ def alec():
 
 @app.route('/roshane')
 def roshane():
-    return render_template("resume_roshane.html")
+    return render_template("resume_shane.html")
 
 @app.route('/isaac')
 def isaac():
-    return render_template("resume_isaac.html")
+    return render_template("resume_issac.html")
 
 @app.route('/sean')
 def sean():
