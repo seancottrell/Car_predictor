@@ -9,12 +9,8 @@ def homepage():
 
 
 @app.route("/")
-def main():
-    return render_template("index2.html")
-
-@app.route("/<name>")
-def user(name):
-    return render_template("index.html")
+def home():
+    return render_template("index.html", content="Testing")
 
 @app.route("/admin")
 def admin():

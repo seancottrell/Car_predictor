@@ -1,45 +1,5 @@
-<!doctype html>
-<html>
-<head>
-    <title>HOME PAGE</title>
-    </head>
-    <body>
-        <h1> Home page!</h1>
-        <p>{%
-            import matplotlib.pyplot as plt
-                        import matplotlib as mpl
-                        from matplotlib import cm
-                        import numpy as np
-                        import pandas as pd
-                        import os
-                        %matplotlib inline
-                        mpl.rc('axes', labelsize=14)
-                        mpl.rc('xtick', labelsize=12)
-                        mpl.rc('ytick', labelsize=12)
-
-                        # Where to save the figures
-                        PROJECT_ROOT_DIR = "."
-                        FOLDER = "figures"
-                        IMAGES_PATH = os.path.join(PROJECT_ROOT_DIR, FOLDER)
-                        os.makedirs(IMAGES_PATH, exist_ok=True)
-
-                        def save_fig(fig_id, tight_layout=True, fig_extension="png", resolution=300):
-                            path = os.path.join(IMAGES_PATH, fig_id + "." + fig_extension)
-                            print("Saving figure", fig_id)
-                            if tight_layout:
-                                plt.tight_layout()
-                            plt.savefig(path, format=fig_extension, dpi=resolution)
-                                    %}
-        </p>
-
-        <p>{%import pandas as pd
-
-            fileName = "MultipleLinearRegression.csv"
-
-            line_df=pd.read_csv(fileName)#reads the data in the file
-
-            line_df%}
-        </p>
-
-    </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<h1></h1>
+{% endblock %}
