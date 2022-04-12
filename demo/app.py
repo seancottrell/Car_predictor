@@ -14,7 +14,7 @@ def main():
 
 @app.route("/<name>")
 def user(name):
-    return f"hello {name}!"
+    return return render_template("index.html")
 
 @app.route("/admin")
 def admin():
