@@ -1,11 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, redirect,render_template,url for
 
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/home')
 def homepage():
     return render_template("home.html")
+
+@app.route("/name>")
+def user(name):
+    return f"hello {name}!"
+
+@app.route("/admin")
+def admin():
+    return redirect(url_for("home"))
+
 
 @app.route('/about')
 def projectwriteup():
