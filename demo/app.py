@@ -10,7 +10,7 @@ def homepage():
 
 @app.route("/")
 def main():
-    return "Hello! this is the main page<h1> HELLO <h1>"
+    return render_template("index.html")
 
 @app.route("/<name>")
 def user(name):
