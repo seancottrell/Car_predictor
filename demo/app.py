@@ -1,71 +1,27 @@
-from flask import Flask, redirect,render_template,url_for, request
-from flask_material import Material
+from flask import Flask, redirect, render_template, url_for, request, escape
 import pandas as pd
-import numpy as np
-from sklearn.externals import joblib
+import joblib
+
+
+
 
 
 app = Flask(__name__)
-Material(app)
+#model = pickle.load(open('model.pkl', 'rb'))
+
+
+# this area is the test code
+
+
+
 
 @app.route('/home')
 def homepage():
     return render_template("home.html")
 
-@app.route('/')
-def index():
-    return render_template("index.html")
-
-@app.route('/preview')
-def preview():
-    df = pd.read_csv("data/iris.csv")
-    return render_template("preview.html",df_view = df)
-
-@app.route('/',methods=["POST"])
-def analyze():
-	if request.method == 'POST':
-		petal_length = request.form['petal_length']
-		sepal_length = request.form['sepal_length']
-		petal_width = request.form['petal_width']
-		sepal_width = request.form['sepal_width']
-		model_choice = request.form['model_choice']
-
-		# Clean the data by convert from unicode to float
-		sample_data = [sepal_length,sepal_width,petal_length,petal_width]
-		clean_data = [float(i) for i in sample_data]
-
-		# Reshape the Data as a Sample not Individual Features
-		ex1 = np.array(clean_data).reshape(1,-1)
-
-
-		# Reloading the Model
-		if model_choice == 'logitmodel':
-		    logit_model = joblib.load('data/logit_model_iris.pkl')
-		    result_prediction = logit_model.predict(ex1)
-		elif model_choice == 'knnmodel':
-			knn_model = joblib.load('data/knn_model_iris.pkl')
-			result_prediction = knn_model.predict(ex1)
-		elif model_choice == 'svmmodel':
-			knn_model = joblib.load('data/svm_model_iris.pkl')
-			result_prediction = knn_model.predict(ex1)
-
-	return render_template('index.html', petal_width=petal_width,
-		sepal_width=sepal_width,
-		sepal_length=sepal_length,
-		petal_length=petal_length,
-		clean_data=clean_data,
-		result_prediction=result_prediction,
-		model_selected=model_choice)
-
-
-
 @app.route("/")
 def home():
-    return render_template("index.html", content="Testing")
-
-@app.route("/admin")
-def admin():
-    return redirect(url_for("main", name="Admin!"))
+    return render_template("base.html")
 
 @app.route('/about')
 def projectwriteup():
@@ -86,6 +42,54 @@ def isaac():
 @app.route('/sean')
 def sean():
     return render_template("resume_sean.html")
+
+#-------------------------------------------------------------------------------------#
+#--------------------------- ML Model Code -------------------------------------------#
+#-------------------------------------------------------------------------------------#
+
+
+@app.route('/usedCarPredictor')
+def usedCarPredictor():
+    return render_template("usedCarPredictor.html")
+
+def preprocessDataAndPredict():
+    # all inputs stored in an array
+    data = []
+
+    # create a Data Frame
+    data = pd.DataFrame({})
+
+    # open the file
+    file = open("final_used_cars_model.pkl", "rb")
+
+    # load trained model
+    trained_model = joblib.load(file)
+
+    # prediction
+    prediction = trained_model.predict(data)
+
+    return round(prediction[0], 0)
+
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    if request.method == "POST":
+        # get the data from user
+        # remove curly brackets and this comment
+        {
+
+
+        }
+        # call the preprocessDataAndPredict function and pass the inputs from user
+        try:
+            prediction = preprocessDataAndPredict()
+            # pass the prediction to the template
+            return render_template('predict.html', prediction=prediction)
+
+        except ValueError:
+            return "Please Enter Valid Values"
+
+        pass
+    pass
 
 
 if __name__ == '__main__':
