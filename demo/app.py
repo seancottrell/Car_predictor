@@ -53,14 +53,13 @@ def usedCarPredictor():
     return render_template("usedCarPredictor.html")
 
 def preprocessDataAndPredict(year, manufacturer, condition, cylinders, fuel, odometer, transmission, drive, vehicle_type, paint_color):
-
     # create a Data Frame
     data = pd.DataFrame({'Make_year': [year], 'Manufacturer': [manufacturer], 'Condition': [condition], 'Cylinders': [cylinders],
                          'Fuel_type': [fuel], 'Mileage': [odometer], 'Transmission_type': [transmission], 'Drivetrain': [drive],
                          'Vehicle_type': [vehicle_type], 'Paint_color': [paint_color]})
 
     # open the file
-    file = open("final_model.pkl", "rb")
+    file = open("final_used_cars_model.pkl", "rb")
 
     # load trained model
     trained_model = joblib.load(file)
@@ -82,7 +81,7 @@ def predict():
         odometer = request.form.get('odometer')
         transmission = request.form.get('transmission')
         drive = request.form.get('drive')
-        type = request.form.get('vehicle_type')
+        vehicle_type = request.form.get('vehicle_type')
         paint_color = request.form.get('paint_color')
 
         # call the preprocessDataAndPredict function and pass the inputs from user
@@ -99,5 +98,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", port=5000, debug=True)
 #change homepage.html to the html file in your templates folder

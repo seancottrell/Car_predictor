@@ -1,9 +1,4 @@
 {% extends 'base.html' %}
-
-{% block header %}
-  <h1>{% block title %}Used Car Price Prediction Model{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
 
 <p>
@@ -18,38 +13,7 @@
 <p>- The cafeteria occupancy at the same time from the previous week (1 week before predicted time)</p>
 <p>- The cafeteria occupancy at the same time from the previous month (1 month before predicted time)</p>
 
- <!-- Starts image section -->
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <img src="{{url_for('static', filename='cafeOccupancy/monday_curve.png')}}" class="gallery__img" width="400"
-                            alt="cafeOccupancyPredictionCurve" />
-                <div class="caption">
-                     <p><strong>Idealized Air Products Cafeteria Occupancy Behavior</strong></p>
-                   </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <img src="{{url_for('static', filename='cafeOccupancy/monday_curve_noisy.png')}}" class="gallery__img" width="400"
-                            alt="cafeOccupancyPredictionCurve" />
-                <div class="caption">
-                     <p><strong>Air Products Cafeteria Data</strong></p>
-                   </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <img src="{{url_for('static', filename='cafeOccupancy/PredictionCurve.png')}}" class="gallery__img" width="400"
-                            alt="cafeOccupancyPredictionCurve" />
-                <div class="caption">
-                     <p><strong>Tuesday Cafeteria Occupancy Prediction Curve</strong></p>
-                   </div>
-            </div>
-        </div>
-    </div>
-    <!-- Ends image section -->
 
     <!-- Starts form section -->
     <div class="form-container ">
