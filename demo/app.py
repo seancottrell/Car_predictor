@@ -54,13 +54,15 @@ def usedCarPredictor():
 
 def preprocessDataAndPredict():
     # all inputs stored in an array
-    data = []
+    data = [year, manufacturer, condition, cylinders, fuel, odometer, transmission, drive, type, paint_color]
 
     # create a Data Frame
-    data = pd.DataFrame({})
+    data = pd.DataFrame({'Make_year': [year], 'Manufacturer': [manufacturer], 'Condition': [condition], 'Cylinders': [cylinders],
+                         'Fuel_type': [fuel], 'Mileage': [odometer], 'Transmission_type': [transmission], 'Drivetrain': [drive],
+                         'Vehicle_type': [type], 'Paint_color': [paint_color]})
 
     # open the file
-    file = open("final_used_cars_model.pkl", "rb")
+    file = open("final_model.pkl", "rb")
 
     # load trained model
     trained_model = joblib.load(file)
@@ -74,11 +76,17 @@ def preprocessDataAndPredict():
 def predict():
     if request.method == "POST":
         # get the data from user
-        # remove curly brackets and this comment
-        {
+        year = request.form.get('year')
+        manufacturer = request.form.get('manufacturer')
+        condition = request.form.get('condition')
+        cylinders = request.form.get('cylinders')
+        fuel = request.form.get('fuel')
+        odometer = request.form.get('odometer')
+        transmission = request.form.get('transmission')
+        drive = request.form.get('drive')
+        type = request.form.get('type')
+        paint_color = request.form.get('paint_color')
 
-
-        }
         # call the preprocessDataAndPredict function and pass the inputs from user
         try:
             prediction = preprocessDataAndPredict()
