@@ -52,14 +52,12 @@ def sean():
 def usedCarPredictor():
     return render_template("usedCarPredictor.html")
 
-def preprocessDataAndPredict():
-    # all inputs stored in an array
-    data = [year, manufacturer, condition, cylinders, fuel, odometer, transmission, drive, type, paint_color]
+def preprocessDataAndPredict(year, manufacturer, condition, cylinders, fuel, odometer, transmission, drive, vehicle_type, paint_color):
 
     # create a Data Frame
     data = pd.DataFrame({'Make_year': [year], 'Manufacturer': [manufacturer], 'Condition': [condition], 'Cylinders': [cylinders],
                          'Fuel_type': [fuel], 'Mileage': [odometer], 'Transmission_type': [transmission], 'Drivetrain': [drive],
-                         'Vehicle_type': [type], 'Paint_color': [paint_color]})
+                         'Vehicle_type': [vehicle_type], 'Paint_color': [paint_color]})
 
     # open the file
     file = open("final_model.pkl", "rb")
@@ -84,12 +82,12 @@ def predict():
         odometer = request.form.get('odometer')
         transmission = request.form.get('transmission')
         drive = request.form.get('drive')
-        type = request.form.get('type')
+        type = request.form.get('vehicle_type')
         paint_color = request.form.get('paint_color')
 
         # call the preprocessDataAndPredict function and pass the inputs from user
         try:
-            prediction = preprocessDataAndPredict()
+            prediction = preprocessDataAndPredict(year, manufacturer, condition, cylinders, fuel, odometer, transmission, drive, vehicle_type, paint_color)
             # pass the prediction to the template
             return render_template('predict.html', prediction=prediction)
 
