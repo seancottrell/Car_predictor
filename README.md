@@ -19,7 +19,7 @@ with Scikit Learn libraries to predict the price of a car given certain paramete
 
 <hr>
 
-###Goal
+### Goal
 
 We are targeting people who are in the market to buy a new vehicle. To give consumers a way to accurately compare prices on the web this model will help them make the best decision.To model the price of cars we use available independent variables. It could be used by the management to understand how exactly the prices vary with the independent variables. They can accordingly manipulate the design of the cars, the business strategy etc. to meet certain price levels. Further, the model will be a good way for management to understand the pricing dynamics of a new market.
 
