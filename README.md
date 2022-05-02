@@ -6,7 +6,7 @@ with Scikit Learn libraries to predict the price of a car given certain paramete
 <hr>
 
 ### Parameters
-1. Year
+1. Year.
 2. Manufacturer
 3. Condition
 4. Cylinders
