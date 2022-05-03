@@ -6,7 +6,7 @@ with Scikit Learn libraries to predict the price of a car given certain paramete
 <hr>
 
 ### Parameters
-1. Year.
+1. Year.                  
 2. Manufacturer
 3. Condition
 4. Cylinders
@@ -17,6 +17,7 @@ with Scikit Learn libraries to predict the price of a car given certain paramete
 9. Paint 
 10. Car Mileage
 
+![plot](/Users/astroshane/Documents/School/AI_files/ai_website/demo/static/CAR.jpeg)
 <hr>
 
 ### Goal
@@ -37,4 +38,5 @@ Please make sure to update tests as appropriate..
 ### License
 [EU](https://choosealicense.com/licenses/EU/)
 
+Step 1: Create a virtual enviornment 
 
